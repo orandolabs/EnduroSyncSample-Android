@@ -18,6 +18,8 @@ import com.orandolabs.endurosync.EnduroObjectStore;
 import com.orandolabs.endurosync.EnduroSync;
 import com.orandolabs.endurosync.EnduroSyncClient;
 import com.orandolabs.endurosync.IEnduroAsync;
+import com.orandolabs.identio.IdentioClient;
+import com.orandolabs.identio.IdentioConstants;
 import com.orandolabs.identio.IdentioParameters;
 
 import java.util.Calendar;
@@ -43,8 +45,8 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    static String kNs = "YOUR NAMESPACE i.e. http://yourdomain.com/ns/";
-    static String kApp = "YOUR APP NAME";
+    static String kNs = "http://www.example.com/ns/";
+    static String kApp = "YOUR APP";
     static String kPassword = "YOUR PASSWORD";
     static String kPassphrase = "YOUR APP PASSPHRASE";
     static String kEmail = "YOUR EMAIL";
@@ -106,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
                     else
                         showUserObject();
                 } catch (Exception e) {
-                    Log.e("sync", e.getMessage());
+                    Log.e("init object failed", e.getMessage());
                 }
             }
 

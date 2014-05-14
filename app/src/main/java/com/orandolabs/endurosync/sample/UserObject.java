@@ -57,14 +57,8 @@ public class UserObject extends EnduroObject
         if (links == null) {
             List<LinkObject> ls = toObjectList("links", LinkObject.class);
             links = new HashSet<LinkObject>();
-            // This deletes dupes
             for (LinkObject l : ls)
-            {
-                if (links.contains(l))
-                    this.objectStore.deleteObject(l);
-                else
-                    links.add(l);
-            }
+                links.add(l);
         }
         return links;
     }
@@ -72,12 +66,12 @@ public class UserObject extends EnduroObject
     public void addLink(LinkObject link) throws EnduroException
     {
         addObjectValue("links", link);
-        links.add(link);
+        getLinks().add(link);
     }
 
     public void removeLink(LinkObject link) throws EnduroException
     {
         removeObjectValue("links", link);
-        links.add(link);
+        getLinks().add(link);
     }
 }
