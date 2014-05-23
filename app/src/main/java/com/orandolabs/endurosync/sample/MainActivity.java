@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
         parms.passphrase = kPassphrase;
         parms.subscription = "endurosync";
 
-        EnduroSync sync = EnduroSync.create(getApplicationContext());
+        EnduroSync sync = new EnduroSync(getApplicationContext());
         EnduroSyncClient client = sync.createClient(parms);
 
         EnduroModel model = new EnduroModel(kNs);
@@ -97,7 +97,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     void getUserObject() {
-        store.getOrCreateNamedObjectRecursiveAsync(parms.username, UserObject.class, new IEnduroAsync<UserObject>() {
+        store.getOrCreateNamedObjectAsync(parms.username, UserObject.class, new IEnduroAsync<UserObject>() {
             @Override
             public void success(UserObject enduroObject) {
                 user = enduroObject;
